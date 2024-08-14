@@ -34,8 +34,23 @@ public class MainController implements Initializable {
     @FXML
     public void onCharMove() {
         moveAlphabetInLabel();
+        creaptText();
 
+    }
 
+    private void creaptText() {
+        String text = plainTextArea.getText();
+        String newText = "";
+        for (int i = 0; i < text.length(); i++) {
+            char c = text.charAt(i);
+            if (c >= 'A' && c <= 'Z') {
+                int index = observableList.indexOf(String.valueOf(c));
+                newText += presentLabel.getText().charAt(index);
+            } else {
+                newText += c;
+            }
+        }
+        encodedTextArea.setText(newText);
     }
 
     private void moveAlphabetInLabel() {
